@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.beersoft.Maps"
-        version   = "1.0.0">
+        version   = "1.1.0">
 	<name>Google Maps</name>
 	<description>
   Mostrar mapa con el plugin  cordova-plugin-googlemaps
@@ -36,9 +36,9 @@
   <preference name="android-minSdkVersion" value="19" />
   <plugin name="cordova-plugin-googlemaps">
     <variable name="API_KEY_FOR_ANDROID" value="AIzaSyBXRAY2jPrFUY-YYy4Y76UMu9_ODY-e1Bo" />
-    <variable name="API_KEY_FOR_IOS" value="AIzaSyBXRAY2jPrFUY-YYy4Y76UMu9_ODY-e1Bo" />
+   
   </plugin>
-  <plugin name="cordova-plugin-geolocation" spec="~2.4.0" />
+
   <engine name="ios" spec="^4.5.5" />
   <engine name="android" spec="^7.0.0" />
   <engine name="browser" spec="~5.0.4" />

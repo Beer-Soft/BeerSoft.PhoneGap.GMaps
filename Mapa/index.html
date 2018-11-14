@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="onsenui/css/onsen-css-components.min.css">
     <script src="onsenui/js/onsenui.min.js"></script>
     <script src="onsenui/js/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="https://mapsplugin.github.io/HelloGoogleMap/cordova.js"></script>-->
-    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="https://mapsplugin.github.io/HelloGoogleMap/cordova.js"></script>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
     <script type="text/javascript">
         document.addEventListener("deviceready", function () {
             //ons.notification.alert("listo");
@@ -15,13 +15,13 @@
 
        
         ons.ready(function () {
-
-            //var secondPage = document.getElementById("first-page");
+            debugger
+            var secondPage = document.getElementById("content-map");
 
             //// Needed to be able to see the Cordova GM on Onsen UI
-            //if (secondPage) {
-            //    secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
-            //}
+            if (secondPage) {
+                secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
+            }
 
             initGoogleMapsCordova();
         })
@@ -155,7 +155,7 @@
     <!--<div id="map_canvas">
         <button id="button">Localizarme</button>
     </div>-->
-    <ons-page>
+    <!--<ons-page>
         <ons-toolbar>
             <div class="center" id="toolbar-title">Mapita</div>
         </ons-toolbar>
@@ -165,13 +165,13 @@
         </ons-tabbar>
     </ons-page>
     <ons-template id="tab1.html">
-        <ons-page id="first-page" style="background-color:rgba(0, 0, 0, 0) !important;">
-            <div id="map_canvas" class="map-container" style="background-color:rgba(0, 0, 0, 0) !important;">
+        <ons-page id="first-page">
+            <div id="map_canvas" class="map-container">
                 <button id="button">Localizarme</button>
             </div>
         </ons-page>
-    </ons-template>
-    <!--<ons-page id="page-map">
+    </ons-template>-->
+    <ons-page id="page-map">
         <ons-toolbar>
             <div class="center">Mapa</div>
             <div class="right">
@@ -180,11 +180,12 @@
                 </ons-toolbar-button>
             </div>
         </ons-toolbar>
-        <div id="map_canvas" class="map-container">
-            <button id="button">Localizarme</button>
+        <div id="content-map" class="content">
+            <div id="map_canvas" class="map-container">
+                <button id="button">Localizarme</button>
+            </div>
         </div>
-
-    </ons-page>-->
+    </ons-page>
 
 </body>
 </html>

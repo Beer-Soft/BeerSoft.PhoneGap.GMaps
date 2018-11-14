@@ -63,7 +63,14 @@
                         // Show the info window
                         marker.showInfoWindow();
 
-                    }, onError, opciones);
+                    }, function (e) {
+                       
+                        var msg = "Error en geolocalización: #" + e.code + "\n" + e.message;
+                        console.log(msg);
+                        ons.notification.alert(msg);
+                        //alert(msg);
+                    }
+                        , opciones);
                 } else {
                     ons.notification.alert("Tu navegador no soporta la geolocalización");
                 }

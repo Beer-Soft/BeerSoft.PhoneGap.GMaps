@@ -33,24 +33,40 @@
             // If you click the button, do something...
             var button = document.getElementById("button");
             button.addEventListener("click", function () {
-                // Move to the position with animation
-                map.animateCamera({
-                    target: { lat: 20.53556, lng: -100.48865 },
-                    zoom: 17,
-                    tilt: 60,
-                    bearing: 140,
-                    duration: 5000
-                });
-                // Add a maker
-                var marker = map.addMarker({
-                    position: { lat: 20.53556, lng: -100.48865 },
-                    title: "Welecome to \n" +
-                        "Cordova GoogleMaps plugin for iOS,Android and Browser!",
-                    snippet: "This plugin is awesome!",
-                    animation: plugin.google.maps.Animation.BOUNCE
-                });
-                // Show the info window
-                marker.showInfoWindow();
+
+                if (navigator.geolocation) {
+                    var opciones = {
+                        timeout: 3000,
+                        enableHighAccuracy: true
+                    };
+                    navigator.geolocation.getCurrentPosition(function (posicion) {
+
+                        lt = posicion.coords.latitude;
+                        ln = posicion.coords.longitude;
+
+                        // Move to the position with animation
+                        map.animateCamera({
+                            target: { lat: lt, lng: ln },
+                            zoom: 17,
+                            tilt: 60,
+                            bearing: 140,
+                            duration: 5000
+                        });
+                        // Add a maker
+                        var marker = map.addMarker({
+                            position: { lat: lt, lng: ln },
+                            title: "Welecome to \n" +
+                                "Cordova GoogleMaps plugin for iOS,Android and Browser!",
+                            snippet: "This plugin is awesome!",
+                            animation: plugin.google.maps.Animation.BOUNCE
+                        });
+                        // Show the info window
+                        marker.showInfoWindow();
+
+                    }, onError, opciones);
+                } else {
+                    ons.notification.alert("Tu navegador no soporta la geolocalización");
+                }
             });
         });
 
@@ -74,10 +90,10 @@
     </style>
 </head>
 <body>
-    <!--<div id="map_canvas">
+    <div id="map_canvas">
         <button id="button">Click me!</button>
-    </div>-->
-    <ons-page id="helloworld-page">
+    </div>
+    <!--<ons-page id="helloworld-page">
         <ons-toolbar>
             <div class="center">Mapa</div>
             <div class="right">
@@ -91,7 +107,7 @@
                 <button id="button">Click me!</button>
             </div>
         </div>
-    </ons-page>
+    </ons-page>-->
 
 </body>
 </html>

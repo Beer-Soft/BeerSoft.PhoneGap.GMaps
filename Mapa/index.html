@@ -46,13 +46,13 @@
 
                         ons.notification.alert("Latitud:" + lt + "\n" + "Longitud: " + ln);
                         //// Move to the position with animation
-                        //map.animateCamera({
-                        //    target: { lat: lt, lng: ln },
-                        //    zoom: 17,
-                        //    tilt: 60,
-                        //    bearing: 140,
-                        //    duration: 5000
-                        //});
+                        map.animateCamera({
+                            target: { lat: lt, lng: ln },
+                            zoom: 17
+                            //tilt: 60,
+                            //bearing: 140,
+                            //duration: 5000
+                        });
                         // Add a maker
                         var marker = map.addMarker({
                             position: { lat: lt, lng: ln },

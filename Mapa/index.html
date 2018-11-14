@@ -45,14 +45,14 @@
                         ln = posicion.coords.longitude;
 
                         ons.notification.alert("Latitud:" + lt + "\n" + "Longitud: " + ln);
-                        // Move to the position with animation
-                        map.animateCamera({
-                            target: { lat: lt, lng: ln },
-                            zoom: 17,
-                            tilt: 60,
-                            bearing: 140,
-                            duration: 5000
-                        });
+                        //// Move to the position with animation
+                        //map.animateCamera({
+                        //    target: { lat: lt, lng: ln },
+                        //    zoom: 17,
+                        //    tilt: 60,
+                        //    bearing: 140,
+                        //    duration: 5000
+                        //});
                         // Add a maker
                         var marker = map.addMarker({
                             position: { lat: lt, lng: ln },
@@ -99,7 +99,7 @@
 </head>
 <body>
     <div id="map_canvas">
-        <button id="button">Click me!</button>
+        <button id="button">Localizarme</button>
     </div>
     <!--<ons-page id="helloworld-page">
         <ons-toolbar>

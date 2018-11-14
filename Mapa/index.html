@@ -15,12 +15,12 @@
 
        
         ons.ready(function () {
-            var secondPage = document.getElementById("first-page");
+            //var secondPage = document.getElementById("first-page");
 
-            // Needed to be able to see the Cordova GM on Onsen UI
-            if (secondPage) {
-                secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
-            }
+            //// Needed to be able to see the Cordova GM on Onsen UI
+            //if (secondPage) {
+            //    secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
+            //}
 
             initGoogleMapsCordova();
         })
@@ -152,7 +152,7 @@
     <!--<div id="map_canvas">
         <button id="button">Localizarme</button>
     </div>-->
-    <ons-page>
+    <!--<ons-page>
         <ons-toolbar>
             <div class="center" id="toolbar-title">Mapa</div>
         </ons-toolbar>
@@ -165,8 +165,8 @@
         <ons-page id="first-page">
             <div id="map_canvas" class="map-container"></div>
         </ons-page>
-    </ons-template>
-    <!--<ons-page id="page-map">
+    </ons-template>-->
+    <ons-page id="page-map" style="background-color:rgba(0, 0, 0, 0);">
         <ons-toolbar>
             <div class="center">Mapa</div>
             <div class="right">
@@ -181,7 +181,7 @@
             </div>
         </div>
 
-    </ons-page>-->
+    </ons-page>
 
 </body>
 </html>

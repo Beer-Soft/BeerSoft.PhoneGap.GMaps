@@ -44,6 +44,7 @@
                         lt = posicion.coords.latitude;
                         ln = posicion.coords.longitude;
 
+                        ons.notification.alert("Latitud:" + lt + "\n" + "Longitud: " + ln);
                         // Move to the position with animation
                         map.animateCamera({
                             target: { lat: lt, lng: ln },

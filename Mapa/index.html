@@ -2,48 +2,52 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="onsenui/css/onsenui.min.css">
+    <link rel="stylesheet" href="onsenui/css/onsen-css-components.min.css">
+    <script src="onsenui/js/onsenui.min.js"></script>
+    <script src="onsenui/js/jquery.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
-    document.addEventListener("deviceready", function() {
-      var div = document.getElementById("map_canvas");
-      // If your app runs this program on browser,
-      // you need to set `API_KEY_FOR_BROWSER_RELEASE` and `API_KEY_FOR_BROWSER_DEBUG`
-      // before `plugin.google.maps.Map.getMap()`
-      //
-      //   API_KEY_FOR_BROWSER_RELEASE for `https:` protocol
-      //   API_KEY_FOR_BROWSER_DEBUG for `http:` protocol
-      //
-      // If your app does not use browser,
-      // you can comment out this code.
-      plugin.google.maps.environment.setEnv({
-        'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-        'API_KEY_FOR_BROWSER_DEBUG': ''
-      });
-      // Create a Google Maps native view under the map_canvas div.
-      var map = plugin.google.maps.Map.getMap(div);
-      // If you click the button, do something...
-      var button = document.getElementById("button");
-      button.addEventListener("click", function() {
-        // Move to the position with animation
-        map.animateCamera({
-            target: { lat: 20.53556, lng: -100.48865},
-          zoom: 17,
-          tilt: 60,
-          bearing: 140,
-          duration: 5000
-        });
-        // Add a maker
-        var marker = map.addMarker({
-            position: { lat: 20.53556, lng: -100.48865},
-          title: "Welecome to \n" +
-                 "Cordova GoogleMaps plugin for iOS,Android and Browser!",
-          snippet: "This plugin is awesome!",
-          animation: plugin.google.maps.Animation.BOUNCE
-        });
-        // Show the info window
-        marker.showInfoWindow();
-      });
-    }, false);
+        document.addEventListener("deviceready", function () {
+            var div = document.getElementById("map_canvas");
+            // If your app runs this program on browser,
+            // you need to set `API_KEY_FOR_BROWSER_RELEASE` and `API_KEY_FOR_BROWSER_DEBUG`
+            // before `plugin.google.maps.Map.getMap()`
+            //
+            //   API_KEY_FOR_BROWSER_RELEASE for `https:` protocol
+            //   API_KEY_FOR_BROWSER_DEBUG for `http:` protocol
+            //
+            // If your app does not use browser,
+            // you can comment out this code.
+            plugin.google.maps.environment.setEnv({
+                'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
+                'API_KEY_FOR_BROWSER_DEBUG': ''
+            });
+            // Create a Google Maps native view under the map_canvas div.
+            var map = plugin.google.maps.Map.getMap(div);
+            // If you click the button, do something...
+            var button = document.getElementById("button");
+            button.addEventListener("click", function () {
+                // Move to the position with animation
+                map.animateCamera({
+                    target: { lat: 20.53556, lng: -100.48865 },
+                    zoom: 17,
+                    tilt: 60,
+                    bearing: 140,
+                    duration: 5000
+                });
+                // Add a maker
+                var marker = map.addMarker({
+                    position: { lat: 20.53556, lng: -100.48865 },
+                    title: "Welecome to \n" +
+                        "Cordova GoogleMaps plugin for iOS,Android and Browser!",
+                    snippet: "This plugin is awesome!",
+                    animation: plugin.google.maps.Animation.BOUNCE
+                });
+                // Show the info window
+                marker.showInfoWindow();
+            });
+        }, false);
     </script>
     <style type="text/css">
         html, body {
@@ -62,9 +66,21 @@
     </style>
 </head>
 <body>
-    <h1>Hello, Mundo!</h1>
-    <div id="map_canvas">
-        <button id="button">Click me!</button>
-    </div>
+    <ons-page id="helloworld-page">
+        <ons-toolbar>
+            <div class="center">Mapa</div>
+            <div class="right">
+                <ons-toolbar-button>
+                    <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
+        <div class="content">
+            <div id="map_canvas">
+                <button id="button">Click me!</button>
+            </div>
+        </div>
+    </ons-page>
+   
 </body>
 </html>

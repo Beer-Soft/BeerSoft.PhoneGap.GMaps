@@ -15,12 +15,14 @@
 
        
         ons.ready(function () {
-            var secondPage = document.getElementById("page-map");
+          //  myNavigator.pushPage('homePage.html');
+          //var page =  document.getElementById("myNavigator");
+            //var secondPage = document.getElementById("page-map");
 
-            // Needed to be able to see the Cordova GM on Onsen UI
-            if (secondPage) {
-                secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
-            }
+            //// Needed to be able to see the Cordova GM on Onsen UI
+            //if (secondPage) {
+            //    secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
+            //}
 
             initGoogleMapsCordova();
         })
@@ -149,6 +151,19 @@
     </style>
 </head>
 <body>
+
+    <ons-navigator swipeable id="myNavigator" page="mapa.html"></ons-navigator>
+
+    <template id="mapa.html">
+        <ons-page id="page1">
+            <ons-toolbar>
+                <div class="center">Mi Ubicacion</div>
+            </ons-toolbar>
+            <div id="map_canvas" class="map-container">
+                <button id="button">Localizarme</button>
+            </div>
+        </ons-page>
+    </template>
     <!--<div id="map_canvas">
         <button id="button">Localizarme</button>
     </div>-->
@@ -163,10 +178,12 @@
     </ons-page>
     <ons-template id="tab1.html">
         <ons-page id="first-page">
-            <div id="map_canvas" class="map-container"></div>
+            <div id="map_canvas" class="map-container">
+                <button id="button">Localizarme</button>
+            </div>
         </ons-page>
     </ons-template>-->
-    <ons-page id="page-map">
+    <!--<ons-page id="page-map">
         <ons-toolbar>
             <div class="center">Mapa</div>
             <div class="right">
@@ -179,7 +196,7 @@
             <button id="button">Localizarme</button>
         </div>
 
-    </ons-page>
+    </ons-page>-->
 
 </body>
 </html>

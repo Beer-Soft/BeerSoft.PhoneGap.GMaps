@@ -9,6 +9,11 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
         document.addEventListener("deviceready", function () {
+          
+        }, false);
+
+        ons.ready(function () {
+
             var div = document.getElementById("map_canvas");
             // If your app runs this program on browser,
             // you need to set `API_KEY_FOR_BROWSER_RELEASE` and `API_KEY_FOR_BROWSER_DEBUG`
@@ -47,7 +52,9 @@
                 // Show the info window
                 marker.showInfoWindow();
             });
-        }, false);
+        });
+
+            
     </script>
     <style type="text/css">
         html, body {

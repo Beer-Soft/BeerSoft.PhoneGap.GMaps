@@ -15,6 +15,12 @@
 
        
         ons.ready(function () {
+            var secondPage = document.getElementById("first-page");
+
+            // Needed to be able to see the Cordova GM on Onsen UI
+            if (secondPage) {
+                secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
+            }
 
             initGoogleMapsCordova();
         })
@@ -146,7 +152,21 @@
     <!--<div id="map_canvas">
         <button id="button">Localizarme</button>
     </div>-->
-    <ons-page id="page-map">
+    <ons-page>
+        <ons-toolbar>
+            <div class="center" id="toolbar-title">Mapa</div>
+        </ons-toolbar>
+        <ons-tabbar id="tab" position="auto">
+            <ons-tab label="Google Cordova" page="tab1.html" active>
+            </ons-tab>
+        </ons-tabbar>
+    </ons-page>
+    <ons-template id="tab1.html">
+        <ons-page id="first-page">
+            <div id="map_canvas" class="map-container"></div>
+        </ons-page>
+    </ons-template>
+    <!--<ons-page id="page-map">
         <ons-toolbar>
             <div class="center">Mapa</div>
             <div class="right">
@@ -160,8 +180,8 @@
                 <button id="button">Localizarme</button>
             </div>
         </div>
-       
-    </ons-page>
+
+    </ons-page>-->
 
 </body>
 </html>

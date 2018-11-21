@@ -7,7 +7,7 @@
     <script src="onsenui/js/onsenui.min.js"></script>
     <script src="onsenui/js/jquery.min.js"></script>
     <script src="js/splitter.js"></script>
-    <!--<script type="text/javascript" src="https://mapsplugin.github.io/HelloGoogleMap/cordova.js"></script>-->
+    <script type="text/javascript" src="https://mapsplugin.github.io/HelloGoogleMap/cordova.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
         document.addEventListener("deviceready", function () {
@@ -72,6 +72,12 @@
                 }
             });
 
+            map.addEventListener(plugin.google.maps.event.MAP_READY, function () {
+                ons.notification.alert("listo");
+                $(".page__background").css("background-color", "rgba(0,0,0,0)");
+               
+            });
+
 
             // If you click the button, do something...
             var button = document.getElementById("button");
@@ -79,7 +85,7 @@
 
                 if (navigator.geolocation) {
                     var opciones = {
-                        timeout: 3000,
+                        timeout: 1000,
                         enableHighAccuracy: true
                     };
                     navigator.geolocation.getCurrentPosition(function (posicion) {
@@ -91,7 +97,7 @@
                         //// Move to the position with animation
                         map.animateCamera({
                             target: { lat: lt, lng: ln },
-                            zoom: 20
+                            zoom: 13
                             //tilt: 60,
                             //bearing: 140,
                             //duration: 5000
@@ -254,9 +260,9 @@
     </template>-->
 
 
-    <div id="map_canvas">
+    <!--<div id="map_canvas">
         <button id="button">Localizarme</button>
-    </div>
+    </div>-->
     <!--<ons-page>
         <ons-toolbar>
             <div class="center" id="toolbar-title">Mapita</div>
@@ -273,7 +279,7 @@
             </div>
         </ons-page>
     </ons-template>-->
-    <!--<ons-page id="page-map">
+    <ons-page id="page-map">
         <ons-toolbar>
             <div class="center">Mapa V32</div>
             <div class="right">
@@ -282,12 +288,12 @@
                 </ons-toolbar-button>
             </div>
         </ons-toolbar>
-        <div id="content-map" class="content">
-            <div id="map_canvas" class="map-container">
+        <div class="content">
+            <div id="map_canvas">
                 <button id="button">Localizarme</button>
             </div>
         </div>
-    </ons-page>-->
+    </ons-page>
 
 </body>
 </html>

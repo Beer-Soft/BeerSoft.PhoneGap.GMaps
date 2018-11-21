@@ -25,7 +25,7 @@ var splitter = {
            menu.open();
     },
     Load: function (page) {
-        
+        debugger
       var content = document.getElementById('content');
       var menu = document.getElementById('menu');
                content.load(page)

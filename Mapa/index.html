@@ -10,10 +10,16 @@
     <!--<script type="text/javascript" src="https://mapsplugin.github.io/HelloGoogleMap/cordova.js"></script>-->
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
+        $(function () {
+            // Initialization code
+            $('#btnAdd').on('click', function (e) {
+                ons.notification.alert('Button is tapped!');
+            })
+        });
         document.addEventListener("deviceready", function () {
             //ons.notification.alert("listo");
         }, false);
-
+       
 
         //ons.ready(function () {
 
@@ -216,8 +222,11 @@
                 </div>
                 <div class="center">Mapita</div>
             </ons-toolbar>
-            <div id="map_canvas">
-                <button id="button">Localizarme</button>
+            <div class="content">
+                <div id="map_canvas">
+                    <button id="button">Localizarme</button>
+                    <button id="btnAdd">Agregar</button>
+                </div>
             </div>
         </ons-page>
     </template>

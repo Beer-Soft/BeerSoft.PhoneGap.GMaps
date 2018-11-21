@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="onsenui/css/onsen-css-components.min.css">
     <script src="onsenui/js/onsenui.min.js"></script>
     <script src="onsenui/js/jquery.min.js"></script>
+    <script src="js/splitter.js"></script>
     <!--<script type="text/javascript" src="https://mapsplugin.github.io/HelloGoogleMap/cordova.js"></script>-->
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript">
@@ -13,48 +14,28 @@
             //ons.notification.alert("listo");
         }, false);
 
-       
-        ons.ready(function () {
-            
-            var secondPage = document.getElementById("content-map");
 
-            //// Needed to be able to see the Cordova GM on Onsen UI
-            if (secondPage) {
-                secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
-            }
-
-            initGoogleMapsCordova();
-        })
-
-        function initGoogleMapsCordova() {
-            var div = document.getElementById("map_canvas");
-
-            var map = plugin.google.maps.Map.getMap(div, {
-                camera: {
-                    target: { "lat": 19.503780, "lng": -99.173647 },
-                    zoom: 10
-                }
-            });
-
-
-            // Wait until the map is ready status.
-            map.addEventListener(plugin.google.maps.event.MAP_READY, function () {
-                map.addMarker({
-                    position: { "lat": 19.503780, "lng": -99.173647 }
-                })
-            });
-        }
         //ons.ready(function () {
-        //    var lt, ln;
-        //    var div = document.getElementById("map_canvas");
-           
-        //    // If your app does not use browser,
-        //    // you can comment out this code.
+
+        //   // var secondPage = document.getElementById("content-map");
+
+        //    ////// Needed to be able to see the Cordova GM on Onsen UI
+        //    //if (secondPage) {
+        //    //    secondPage.firstElementChild.style.backgroundColor = "rgba(0, 0, 0, 0)";
+        //    //}
+
+        //    initGoogleMapsCordova();
+        //})
+
+        //function initGoogleMapsCordova() {
+
         //    plugin.google.maps.environment.setEnv({
         //        'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyBZamoub9SCWL2GriEBRSgLGVVrF0QPakk',
-        //        'API_KEY_FOR_BROWSER_DEBUG': ''
+        //        'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBZamoub9SCWL2GriEBRSgLGVVrF0QPakk'
         //    });
-        //    // Create a Google Maps native view under the map_canvas div.
+
+        //    var div = document.getElementById("map_canvas");
+
         //    var map = plugin.google.maps.Map.getMap(div, {
         //        camera: {
         //            target: { "lat": 19.503780, "lng": -99.173647 },
@@ -63,72 +44,101 @@
         //    });
 
 
-        //    // If you click the button, do something...
-        //    var button = document.getElementById("button");
-        //    button.addEventListener("click", function () {
-
-        //        if (navigator.geolocation) {
-        //            var opciones = {
-        //                timeout: 3000,
-        //                enableHighAccuracy: true
-        //            };
-        //            navigator.geolocation.getCurrentPosition(function (posicion) {
-
-        //                lt = posicion.coords.latitude;
-        //                ln = posicion.coords.longitude;
-
-        //                ons.notification.alert("Latitud:" + lt + "\n" + "Longitud: " + ln);
-        //                //// Move to the position with animation
-        //                map.animateCamera({
-        //                    target: { lat: lt, lng: ln },
-        //                    zoom: 20
-        //                    //tilt: 60,
-        //                    //bearing: 140,
-        //                    //duration: 5000
-        //                });
-        //                // Add a maker
-        //                var marker = map.addMarker({
-        //                    position: { lat: lt, lng: ln },
-        //                    animation: plugin.google.maps.Animation.BOUNCE
-        //                });
-
-        //                // Latitude, longitude -> address
-        //                plugin.google.maps.Geocoder.geocode({
-        //                    "position": { lat: lt, lng: ln }
-        //                }, function (results) {
-
-        //                    if (results.length === 0) {
-        //                        // Not found
-        //                        return;
-        //                    }
-
-        //                    var address = [
-        //                        results[0].subThoroughfare || "",
-        //                        results[0].thoroughfare || "",
-        //                        results[0].locality || "",
-        //                        results[0].adminArea || "",
-        //                        results[0].postalCode || "",
-        //                        results[0].country || ""].join(", ");
-
-        //                    marker.setTitle(address)
-        //                        .showInfoWindow();
-        //                });
-        //                //// Show the info window
-        //                //marker.showInfoWindow();
-
-        //            }, function (e) {
-
-        //                var msg = "Error en geolocalización: #" + e.code + "\n" + e.message;
-        //                console.log(msg);
-        //                ons.notification.alert(msg);
-        //                //alert(msg);
-        //            }
-        //                , opciones);
-        //        } else {
-        //            ons.notification.alert("Tu navegador no soporta la geolocalización");
-        //        }
+        //    // Wait until the map is ready status.
+        //    map.addEventListener(plugin.google.maps.event.MAP_READY, function () {
+        //        ons.notification.alert("listo");
+        //        $(".page__background").css("background-color", "rgba(0,0,0,0)");
+        //        map.addMarker({
+        //            position: { "lat": 19.503780, "lng": -99.173647 }
+        //        })
         //    });
-        //});
+        //} 
+        ons.ready(function () {
+
+            var lt, ln;
+            var div = document.getElementById("map_canvas");
+
+            // If your app does not use browser,
+            // you can comment out this code.
+            plugin.google.maps.environment.setEnv({
+                'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyBZamoub9SCWL2GriEBRSgLGVVrF0QPakk',
+                'API_KEY_FOR_BROWSER_DEBUG': ''
+            });
+            // Create a Google Maps native view under the map_canvas div.
+            var map = plugin.google.maps.Map.getMap(div, {
+                camera: {
+                    target: { "lat": 19.503780, "lng": -99.173647 },
+                    zoom: 10
+                }
+            });
+
+
+            // If you click the button, do something...
+            var button = document.getElementById("button");
+            button.addEventListener("click", function () {
+
+                if (navigator.geolocation) {
+                    var opciones = {
+                        timeout: 3000,
+                        enableHighAccuracy: true
+                    };
+                    navigator.geolocation.getCurrentPosition(function (posicion) {
+
+                        lt = posicion.coords.latitude;
+                        ln = posicion.coords.longitude;
+
+                        ons.notification.alert("Latitud:" + lt + "\n" + "Longitud: " + ln);
+                        //// Move to the position with animation
+                        map.animateCamera({
+                            target: { lat: lt, lng: ln },
+                            zoom: 20
+                            //tilt: 60,
+                            //bearing: 140,
+                            //duration: 5000
+                        });
+                        // Add a maker
+                        var marker = map.addMarker({
+                            position: { lat: lt, lng: ln },
+                            animation: plugin.google.maps.Animation.BOUNCE
+                        });
+
+                        // Latitude, longitude -> address
+                        plugin.google.maps.Geocoder.geocode({
+                            "position": { lat: lt, lng: ln }
+                        }, function (results) {
+
+                            if (results.length === 0) {
+                                // Not found
+                                return;
+                            }
+
+                            var address = [
+                                results[0].subThoroughfare || "",
+                                results[0].thoroughfare || "",
+                                results[0].locality || "",
+                                results[0].adminArea || "",
+                                results[0].postalCode || "",
+                                results[0].country || ""].join(", ");
+
+                            marker.setTitle(address)
+                                .showInfoWindow();
+                        });
+                        //// Show the info window
+                        //marker.showInfoWindow();
+
+                    }, function (e) {
+
+                        var msg = "Error en geolocalización: #" + e.code + "\n" + e.message;
+                        console.log(msg);
+                        ons.notification.alert(msg);
+                        //alert(msg);
+                    }
+                        , opciones);
+                } else {
+                    ons.notification.alert("Tu navegador no soporta la geolocalización");
+                }
+            });
+        });
 
 
     </script>
@@ -140,7 +150,6 @@
         #map_canvas { /* Must bigger size than 100x100 pixels */
             width: 100%;
             height: 100%;
-            
         }
 
         button {
@@ -151,10 +160,103 @@
 </head>
 <body>
 
-   
-    <!--<div id="map_canvas">
+    <!--<ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item onclick="splitter.Load('home.html')" tappable>
+                        Inicio
+                    </ons-list-item>
+                    <ons-list-item onclick="splitter.Load('mapa.html')" tappable>
+                        Mapa
+                    </ons-list-item>
+                    <ons-list-item onclick="splitter.Load('device.html')" tappable>
+                        Dispositivo
+                    </ons-list-item>
+                    <ons-list-item onclick="splitter.Load('about.html')" tappable>
+                        About
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+    </ons-splitter>
+
+    <template id="home.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="splitter.Open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+
+                    Main
+                </div>
+            </ons-toolbar>
+            <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+                Swipe right to open the menu!
+            </p>
+        </ons-page>
+    </template>
+    <template id="mapa.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="splitter.Open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">Mapita</div>
+            </ons-toolbar>
+            <div id="map_canvas">
+                <button id="button">Localizarme</button>
+            </div>
+        </ons-page>
+    </template>
+    <template id="device.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="splitter.Open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    Dispositivo
+                </div>
+            </ons-toolbar>
+            <ons-list>
+                <ons-list-header>Detalle</ons-list-header>
+                <ons-list-item>PhoneGap version: <div id="version"></div></ons-list-item>
+                <ons-list-item>Modelo:  <div id="modelo"></div></ons-list-item>
+                <ons-list-item>uuid:  <div id="uuid"></div></ons-list-item>
+                <ons-list-item>Fabricante:  <div id="fabricante"></div></ons-list-item>
+                <ons-list-item>isVirtual:  <div id="isvirtual"></div></ons-list-item>
+                <ons-list-item>Serie:  <div id="serie"></div></ons-list-item>
+            </ons-list>
+        </ons-page>
+    </template>
+    <template id="about.html">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="splitter.Open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    About
+                </div>
+            </ons-toolbar>
+        </ons-page>
+    </template>-->
+
+
+    <div id="map_canvas">
         <button id="button">Localizarme</button>
-    </div>-->
+    </div>
     <!--<ons-page>
         <ons-toolbar>
             <div class="center" id="toolbar-title">Mapita</div>
@@ -171,7 +273,7 @@
             </div>
         </ons-page>
     </ons-template>-->
-    <ons-page id="page-map">
+    <!--<ons-page id="page-map">
         <ons-toolbar>
             <div class="center">Mapa V32</div>
             <div class="right">
@@ -185,7 +287,7 @@
                 <button id="button">Localizarme</button>
             </div>
         </div>
-    </ons-page>
+    </ons-page>-->
 
 </body>
 </html>
